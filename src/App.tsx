@@ -1,3 +1,10 @@
+import { PlacesProvider } from './context'
+import { HomePage } from './pages'
+
 export const App = () => {
-	return <div>App</div>
+	return (
+		<PlacesProvider>
+			<HomePage />
+		</PlacesProvider>
+	)
 }
