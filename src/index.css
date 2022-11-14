@@ -1,24 +1,24 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+	--colors-onSurfaceHigh: hsla(0 0% 0% / 0.87);
+	--colors-bg: hsl(0 0% 96%);
 
-  --colors-onSurfaceHigh: hsla(0 0% 0% / 0.87);
-  --colors-bg: hsl(0 0% 96%);
+	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
 
-  color: var(--colors-onSurfaceHigh);
-  background-color: var(--colors-bg);
+	color: var(--colors-onSurfaceHigh);
+	background-color: var(--colors-bg);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
 }
