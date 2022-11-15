@@ -15,23 +15,19 @@ const Element = styled('svg')<ElementProps>(
 		color = 'var(--colors-primary)',
 		speed = '2s',
 	}) => ({
-		'--uib-size': size,
-		'--uib-speed': speed,
-		'--uib-color': color,
-
-		height: 'var(--uib-size)',
-		width: 'var(--uib-size)',
+		height: size,
+		width: size,
 		verticalAlign: 'middle',
 		transformOrigin: 'center',
-		animation: 'rotate var(--uib-speed) linear infinite',
+		animation: `rotate ${speed} linear infinite`,
 
 		'& > circle': {
 			fill: 'none',
-			stroke: 'var(--uib-color)',
+			stroke: color,
 			strokeDasharray: '1, 200',
 			strokeDashoffset: 0,
 			strokeLinecap: 'round',
-			animation: 'stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite',
+			animation: `stretch calc(${speed} * 0.75) ease-in-out infinite`,
 		},
 
 		'@keyframes rotate': {

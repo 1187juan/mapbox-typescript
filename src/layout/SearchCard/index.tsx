@@ -1,6 +1,7 @@
 import { ChangeEvent, useRef } from 'react'
-import { Grid, Input } from '../../components'
+import { Grid, Input, LinearLoader } from '../../components'
 import { usePlaces } from '../../hooks'
+import { SearchResults } from '../SearchResults'
 import { Container } from './Container'
 
 export const SearchCard = () => {
@@ -28,6 +29,7 @@ export const SearchCard = () => {
 			>
 				<Input onChange={onQueryChange} placeholder='Escribe una dirección' />
 			</Grid>
+			<SearchResults />
 		</Container>
 	)
 }

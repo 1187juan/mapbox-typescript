@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { ButtonHTMLAttributes, forwardRef } from 'react'
 import { CSSProps } from '../interfaces/styles'
 
-type VariantsName = 'solid'
+type VariantsName = 'solid' | 'link'
 const variants: Record<VariantsName, CSSProps> = {
 	solid: {
 		minWidth: '10rem',
@@ -17,6 +17,16 @@ const variants: Record<VariantsName, CSSProps> = {
 		},
 		'&:active': {
 			scale: '.9',
+		},
+	},
+	link: {
+		color: 'var(--colors-primary)',
+		backgroundColor: 'transparent',
+		padding: 0,
+
+		'&:hover': {
+			filter: 'brightness(1.1)',
+			textDecorationLine: 'underline',
 		},
 	},
 }
