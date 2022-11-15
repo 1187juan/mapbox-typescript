@@ -1,10 +1,11 @@
 import { Map } from 'mapbox-gl'
 import { useLayoutEffect, useRef } from 'react'
 import { Box, Loader } from '../components'
-import { usePlaces } from '../hooks'
+import { useMap, usePlaces } from '../hooks'
 
 export const MapView = () => {
 	const { isLoading, userLocation } = usePlaces()
+	const { setMap } = useMap()
 	const mapDiv = useRef<HTMLDivElement>(null)
 
 	useLayoutEffect(() => {
@@ -16,6 +17,8 @@ export const MapView = () => {
 			center: userLocation,
 			zoom: 12,
 		})
+
+		setMap(map)
 	}, [isLoading])
 
 	if (isLoading)
