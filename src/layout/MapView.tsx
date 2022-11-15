@@ -42,7 +42,11 @@ export const MapView = () => {
 				top: 0,
 				left: 0,
 				width: '100%',
-				height: '100%',
+				height: '50%',
+				'@media screen and (min-width: 64rem)': {
+					height: '100%',
+					width: 'calc(100% + 1.5rem + 24rem)',
+				},
 			}}
 		/>
 	)

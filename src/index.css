@@ -1,8 +1,13 @@
 :root {
-	--colors-primary: #00cdff;
+	--colors-bg: hsl(0 0% 94%);
+	--colors-hover: hsla(0 0% 0% / 0.04);
 	--colors-onPrimary: hsla(0 0% 100% / 0.87);
 	--colors-onSurfaceHigh: hsla(0 0% 0% / 0.87);
-	--colors-bg: hsl(0 0% 94%);
+	--colors-outline: hsla(0 0% 0% / 0.08);
+	--colors-primary: #00cdff;
+	--colors-surface: hsl(0 0% 100%);
+
+	--boxShadow01: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 
 	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 	font-size: 16px;
