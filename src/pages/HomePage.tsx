@@ -1,3 +1,9 @@
+import { MapView } from '../layout'
+
 export const HomePage = () => {
-	return <div>HomePage</div>
+	return (
+		<>
+			<MapView />
+		</>
+	)
 }

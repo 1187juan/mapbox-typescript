@@ -1,14 +1,14 @@
 import styled from '@emotion/styled'
-import { CSSProperties, ElementType, forwardRef, HTMLAttributes } from 'react'
+import { ElementType, forwardRef, HTMLAttributes } from 'react'
+import { CSSProps } from '../interfaces/styles'
 
 interface ElementProps {
-	sx?: CSSProperties | { [key: string]: CSSProperties } | {}
+	sx?: CSSProps
 }
 
 const Element = styled('div')<ElementProps>(({ sx = {} }) => ({ ...sx }))
-
 interface Props extends HTMLAttributes<HTMLElement> {
-	sx?: CSSProperties | { [key: string]: CSSProperties }
+	sx?: CSSProps
 	as?: ElementType<any>
 }
 

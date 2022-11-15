@@ -1,6 +1,7 @@
 :root {
+	--colors-primary: #00cdff;
 	--colors-onSurfaceHigh: hsla(0 0% 0% / 0.87);
-	--colors-bg: hsl(0 0% 96%);
+	--colors-bg: hsl(0 0% 94%);
 
 	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 	font-size: 16px;
