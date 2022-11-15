@@ -1,4 +1,5 @@
 import { useEffect, useReducer } from 'react'
+import { searchApi } from '../../apis'
 import { getCurrentPosition } from '../../helpers'
 import { PlacesContext } from './PlacesContext'
 import { placesReducer } from './placesReducer'
@@ -20,6 +21,19 @@ export interface PlacesProviderProps {
 export const PlacesProvider = ({ children }: PlacesProviderProps) => {
 	const [state, dispatch] = useReducer(placesReducer, INITIAL_STATE)
 
+	const searchPlacesByQuery = async (query: string) => {
+		if (!query.length) return []
+		if (!state.userLocation) throw new Error('No hay ubicación del usuario.')
+
+		const res = await searchApi.get(`/${query}.json`, {
+			params: {
+				proximity: state.userLocation.join(','),
+			},
+		})
+
+		return res.data
+	}
+
 	useEffect(() => {
 		getCurrentPosition()
 			.then(coords => dispatch({ type: 'setUserLocation', payload: coords }))
@@ -33,6 +47,7 @@ export const PlacesProvider = ({ children }: PlacesProviderProps) => {
 		<PlacesContext.Provider
 			value={{
 				...state,
+				searchPlacesByQuery,
 			}}
 		>
 			{children}

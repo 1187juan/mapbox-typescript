@@ -1,14 +1,18 @@
 import { ChangeEvent, useRef } from 'react'
 import { Grid, Input } from '../../components'
+import { usePlaces } from '../../hooks'
 import { Container } from './Container'
 
 export const SearchCard = () => {
 	const debounceRef = useRef<number | undefined>()
+	const { searchPlacesByQuery } = usePlaces()
 
 	const onQueryChange = (e: ChangeEvent<HTMLInputElement>) => {
 		debounceRef.current && clearTimeout(debounceRef.current)
 		debounceRef.current = setTimeout(() => {
-			console.log(e.target.value)
+			searchPlacesByQuery(e.target.value)
+				.then(data => console.log(data))
+				.catch(err => console.log(err))
 		}, 300)
 	}
 
