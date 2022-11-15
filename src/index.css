@@ -1,5 +1,6 @@
 :root {
 	--colors-primary: #00cdff;
+	--colors-onPrimary: hsla(0 0% 100% / 0.87);
 	--colors-onSurfaceHigh: hsla(0 0% 0% / 0.87);
 	--colors-bg: hsl(0 0% 94%);
 

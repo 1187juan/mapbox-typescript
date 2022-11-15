@@ -13,7 +13,7 @@ export const MapView = () => {
 
 		const map = new Map({
 			container: mapDiv.current!,
-			style: 'mapbox://styles/mapbox/streets-v11',
+			style: 'mapbox://styles/mapbox/light-v10',
 			center: userLocation,
 			zoom: 12,
 		})
