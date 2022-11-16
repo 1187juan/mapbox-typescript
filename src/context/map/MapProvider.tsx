@@ -40,6 +40,11 @@ export const MapProvider = ({ children }: Props) => {
 		dispatch({ type: 'setMap', payload: map })
 	}
 
+	const getRouteBetweenPoints = async (
+		pointStart: [number, number],
+		pointEnd: [number, number]
+	) => {}
+
 	useEffect(() => {
 		state.markers.forEach(marker => marker.remove())
 		const newMarkers: Marker[] = []
@@ -66,6 +71,7 @@ export const MapProvider = ({ children }: Props) => {
 			value={{
 				...state,
 				setMap,
+				getRouteBetweenPoints,
 			}}
 		>
 			{children}
