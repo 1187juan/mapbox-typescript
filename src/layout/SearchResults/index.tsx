@@ -5,8 +5,8 @@ import { Feature } from '../../interfaces/places'
 import { SearchItem } from './SearchItem'
 
 export const SearchResults = () => {
-	const { isLoadingPlaces, places } = usePlaces()
-	const { map } = useMap()
+	const { isLoadingPlaces, places, userLocation } = usePlaces()
+	const { map, getRouteBetweenPoints } = useMap()
 	const [placeId, setPlaceId] = useState('')
 
 	const onPlace = (place: Feature) => {
@@ -16,6 +16,12 @@ export const SearchResults = () => {
 			zoom: 12,
 			center: [lng, lat],
 		})
+	}
+
+	const onRoute = (place: Feature) => {
+		if (!userLocation) return
+		const [lng, lat] = place.center
+		getRouteBetweenPoints(userLocation, [lng, lat])
 	}
 
 	if (isLoadingPlaces) return <LinearLoader />
@@ -39,7 +45,7 @@ export const SearchResults = () => {
 					onClick={() => onPlace(place)}
 					onClickDirection={e => {
 						e.stopPropagation()
-						console.log('ok')
+						onRoute(place)
 					}}
 					isActive={placeId === place.id}
 				/>
