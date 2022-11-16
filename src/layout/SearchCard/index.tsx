@@ -11,9 +11,7 @@ export const SearchCard = () => {
 	const onQueryChange = (e: ChangeEvent<HTMLInputElement>) => {
 		debounceRef.current && clearTimeout(debounceRef.current)
 		debounceRef.current = setTimeout(() => {
-			searchPlacesByQuery(e.target.value)
-				.then(data => console.log(data))
-				.catch(err => console.log(err))
+			searchPlacesByQuery(e.target.value).catch(err => console.log(err))
 		}, 300)
 	}
 

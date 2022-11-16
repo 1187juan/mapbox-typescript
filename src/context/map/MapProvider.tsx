@@ -1,16 +1,19 @@
 import { Map, Marker, Popup } from 'mapbox-gl'
-import { useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
+import { usePlaces } from '../../hooks'
 import { MapContext } from './MapContext'
 import { mapReducer } from './mapReducer'
 
 export interface MapState {
 	isMapReady: boolean
 	map?: Map
+	markers: Marker[]
 }
 
 const INITIAL_STATE: MapState = {
 	isMapReady: false,
 	map: undefined,
+	markers: [],
 }
 
 interface Props {
@@ -19,6 +22,7 @@ interface Props {
 
 export const MapProvider = ({ children }: Props) => {
 	const [state, dispatch] = useReducer(mapReducer, INITIAL_STATE)
+	const { places } = usePlaces()
 
 	const setMap = (map: Map) => {
 		const popup = new Popup().setHTML(`
@@ -35,6 +39,27 @@ export const MapProvider = ({ children }: Props) => {
 
 		dispatch({ type: 'setMap', payload: map })
 	}
+
+	useEffect(() => {
+		state.markers.forEach(marker => marker.remove())
+		const newMarkers: Marker[] = []
+
+		for (const place of places) {
+			const [lng, lat] = place.center
+			const popup = new Popup().setHTML(`
+			<H3>${place.text_es}</h3>
+			<p>${place.place_name_es}</p>
+			`)
+			const newMarker = new Marker()
+				.setPopup(popup)
+				.setLngLat([lng, lat])
+				.addTo(state.map!)
+
+			newMarkers.push(newMarker)
+		}
+
+		dispatch({ type: 'setMarkers', payload: newMarkers })
+	}, [places])
 
 	return (
 		<MapContext.Provider
