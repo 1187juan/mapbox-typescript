@@ -21,6 +21,7 @@ export const SearchCard = () => {
 				sx={{
 					position: 'sticky',
 					top: 0,
+					zIndex: 1,
 					padding: '1rem',
 					backgroundColor: 'var(--colors-surface)',
 				}}
