@@ -24,12 +24,16 @@ export const MapView = () => {
 	if (isLoading)
 		return (
 			<Loader
-				size='8rem'
+				size='6rem'
 				sx={{
 					position: 'fixed',
 					left: '50%',
-					top: '50%',
+					top: '25%',
 					translate: '-50% -50%',
+					'@media screen and (min-width: 64rem)': {
+						top: '50%',
+						left: 'calc(50% + (24rem + 1.5rem) / 2)',
+					},
 				}}
 			/>
 		)
